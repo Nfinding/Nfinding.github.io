@@ -1,0 +1,821 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Mysql," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="当我遇到NodeJs之后，好像通过这个’门缝’渐渐对后台有了了解，然后就有了试试本地数据库的想法，然后就在众多数据库（关系型数据库:oracle、miscrosoft Sql Server、mysql、postgresql（以稳定性著称）非关系数据库:redis数据库（内存数据库））中选择了mysql。MySQL数据库MySQL数据管理系统由瑞典的MySQLDB公司开发，但是几经辗转，现在已经是O">
+<meta name="keywords" content="Mysql">
+<meta property="og:type" content="article">
+<meta property="og:title" content="我的Mysql入门">
+<meta property="og:url" content="https://Nfinding.githup.io/2017/02/28/我的Mysql入门/index.html">
+<meta property="og:site_name" content="Nfinding">
+<meta property="og:description" content="当我遇到NodeJs之后，好像通过这个’门缝’渐渐对后台有了了解，然后就有了试试本地数据库的想法，然后就在众多数据库（关系型数据库:oracle、miscrosoft Sql Server、mysql、postgresql（以稳定性著称）非关系数据库:redis数据库（内存数据库））中选择了mysql。MySQL数据库MySQL数据管理系统由瑞典的MySQLDB公司开发，但是几经辗转，现在已经是O">
+<meta property="og:image" content="https://nfinding.githup.io/images/t1.png">
+<meta property="og:image" content="https://nfinding.githup.io/images/t2.png">
+<meta property="og:image" content="https://nfinding.githup.io/images/t3.png">
+<meta property="og:image" content="https://nfinding.githup.io/images/t4.png">
+<meta property="og:image" content="https://nfinding.githup.io/images/t5.png">
+<meta property="og:image" content="https://nfinding.githup.io/images/t6.png">
+<meta property="og:image" content="https://nfinding.githup.io/images/t7.png">
+<meta property="og:image" content="https://nfinding.githup.io/images/t8.png">
+<meta property="og:image" content="https://nfinding.githup.io/images/t9.png">
+<meta property="og:image" content="https://nfinding.githup.io/images/t10.png">
+<meta property="og:image" content="https://nfinding.githup.io/images/t11.png">
+<meta property="og:image" content="https://nfinding.githup.io/images/t12.png">
+<meta property="og:image" content="https://nfinding.githup.io/images/t13.png">
+<meta property="og:image" content="https://nfinding.githup.io/images/t14.png">
+<meta property="og:image" content="https://nfinding.githup.io/images/t15.png">
+<meta property="og:image" content="https://nfinding.githup.io/images/t16.png">
+<meta property="og:image" content="https://nfinding.githup.io/images/t17.png">
+<meta property="og:image" content="https://nfinding.githup.io/images/t18.png">
+<meta property="og:updated_time" content="2017-05-04T06:10:56.951Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="我的Mysql入门">
+<meta name="twitter:description" content="当我遇到NodeJs之后，好像通过这个’门缝’渐渐对后台有了了解，然后就有了试试本地数据库的想法，然后就在众多数据库（关系型数据库:oracle、miscrosoft Sql Server、mysql、postgresql（以稳定性著称）非关系数据库:redis数据库（内存数据库））中选择了mysql。MySQL数据库MySQL数据管理系统由瑞典的MySQLDB公司开发，但是几经辗转，现在已经是O">
+<meta name="twitter:image" content="https://nfinding.githup.io/images/t1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://Nfinding.githup.io/2017/02/28/我的Mysql入门/"/>
+
+
+
+
+
+  <title>我的Mysql入门 | Nfinding</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Nfinding</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://Nfinding.githup.io/2017/02/28/我的Mysql入门/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nfinding">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/me.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nfinding">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                我的Mysql入门
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-28T13:25:54+08:00">
+                2017-02-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Mysql入门/" itemprop="url" rel="index">
+                    <span itemprop="name">Mysql入门</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="当我遇到NodeJs之后，好像通过这个’门缝’渐渐对后台有了了解，然后就有了试试本地数据库的想法，然后就在众多数据库（关系型数据库-oracle、miscrosoft-Sql-Server、mysql、postgresql（以稳定性著称）非关系数据库-redis数据库（内存数据库））中选择了mysql。"><a href="#当我遇到NodeJs之后，好像通过这个’门缝’渐渐对后台有了了解，然后就有了试试本地数据库的想法，然后就在众多数据库（关系型数据库-oracle、miscrosoft-Sql-Server、mysql、postgresql（以稳定性著称）非关系数据库-redis数据库（内存数据库））中选择了mysql。" class="headerlink" title="当我遇到NodeJs之后，好像通过这个’门缝’渐渐对后台有了了解，然后就有了试试本地数据库的想法，然后就在众多数据库（关系型数据库:oracle、miscrosoft Sql Server、mysql、postgresql（以稳定性著称）非关系数据库:redis数据库（内存数据库））中选择了mysql。"></a>当我遇到NodeJs之后，好像通过这个’门缝’渐渐对后台有了了解，然后就有了试试本地数据库的想法，然后就在众多数据库（关系型数据库:oracle、miscrosoft Sql Server、mysql、postgresql（以稳定性著称）非关系数据库:redis数据库（内存数据库））中选择了mysql。</h2><h2 id="MySQL数据库"><a href="#MySQL数据库" class="headerlink" title="MySQL数据库"></a>MySQL数据库</h2><h3 id="MySQL数据管理系统由瑞典的MySQLDB公司开发，但是几经辗转，现在已经是Oracle的产品了。"><a href="#MySQL数据管理系统由瑞典的MySQLDB公司开发，但是几经辗转，现在已经是Oracle的产品了。" class="headerlink" title="MySQL数据管理系统由瑞典的MySQLDB公司开发，但是几经辗转，现在已经是Oracle的产品了。"></a>MySQL数据管理系统由瑞典的MySQLDB公司开发，但是几经辗转，现在已经是Oracle的产品了。</h3><p>开源、免费、轻量<br>MySQL具有跨平台的特性，不仅可以在Windows平台上使用，还可以在Unix、Linux和Mac OSX平台上使用。<br>相对其它数据库而言，MySQL的使用也更加方便、快捷而且MySQL免费所以运营成本低，因此很多公司都在用MySQL。<br>Oracle收购过来之后，发行了两个版本：一个是企业版，公司买了之后，Oracle公司可以提供一些服务，例如数据恢复，或者说存储数据出现了问题<br>一个社区版，也就是免费开原版<br>随便用，免费滴，但是出了问题，没人管，自己去解决</p>
+<h1 id="一、-MySQL安装与配置"><a href="#一、-MySQL安装与配置" class="headerlink" title="一、 MySQL安装与配置"></a>一、 MySQL安装与配置</h1><h2 id="Windows平台下安装和配置MySQL-官方网站：http-www-mysql-com"><a href="#Windows平台下安装和配置MySQL-官方网站：http-www-mysql-com" class="headerlink" title="Windows平台下安装和配置MySQL     官方网站：http://www.mysql.com/"></a>Windows平台下安装和配置MySQL     官方网站：<a href="http://www.mysql.com/" target="_blank" rel="external">http://www.mysql.com/</a></h2><p>1.<br><img src="/images/t1.png" alt=""><br>2.<br><img src="/images/t2.png" alt=""><br>3.<br><img src="/images/t3.png" alt=""><br>4.<br><img src="/images/t4.png" alt=""><br>5.<br><img src="/images/t5.png" alt=""><br>6.<br><img src="/images/t6.png" alt=""></p>
+<ol>
+<li><img src="/images/t7.png" alt=""><br>8.<br><img src="/images/t8.png" alt=""><br>9.<br><img src="/images/t9.png" alt=""><br>10.<br><img src="/images/t10.png" alt=""><br>11.<br><img src="/images/t11.png" alt=""><br>12.<br><img src="/images/t12.png" alt=""><br>13.<br><img src="/images/t13.png" alt=""><br>14.<br><img src="/images/t14.png" alt=""><br>15.<br><img src="/images/t15.png" alt=""><br>16<br><img src="/images/t16.png" alt=""><br>17.<br><img src="/images/t17.png" alt=""><br>18.<br><img src="/images/t18.png" alt=""></li>
+</ol>
+<p>验证mysql是否安装成功：<br>打开命令台，输入services.msc找到mysql服务<br>通过在cmd命令台中输入path查看是否有mysql的bin目录</p>
+<h1 id="二、MySQL目录结构"><a href="#二、MySQL目录结构" class="headerlink" title="二、MySQL目录结构"></a>二、MySQL目录结构</h1><p>bin：可执行文件所在目录<br>data：数据文件所在目录<br>Docs：文档目录<br>share：存放字符集等信息<br>my.ini：MySQL数据库使用的配置文件</p>
+<h1 id="三、MySQL的使用"><a href="#三、MySQL的使用" class="headerlink" title="三、MySQL的使用"></a>三、MySQL的使用</h1><h2 id="启动-和-停止MySQL服务"><a href="#启动-和-停止MySQL服务" class="headerlink" title="启动 和 停止MySQL服务"></a>启动 和 停止MySQL服务</h2><p>通过Windows服务管理器启动MySQL服务<br>通过Windows的运行，输入services.msc找到MySQL服务<br>通过DOS命令启动MySQL服务<br>net stop mysql    停止MySQL服务<br>net start mysql    开启MySQL服务</p>
+<h2 id="登录MySQL数据库"><a href="#登录MySQL数据库" class="headerlink" title="登录MySQL数据库"></a>登录MySQL数据库</h2><p>使用相关命令登录 修改密码:<br>打开命令台：<br>mysql -h localhost -P 3306 -u root -p<br>-h：主机名<br>-P：端口<br>-u：用户名<br>-p：密码<br>这种方式一般用来连接远程数据库服务器<br>mysql默认连接localhost和3306，所以可以省略-h和-P<br>mysql -u root -p<br>这种方式一般用来连接本机，可以省略-h和-P，默认就是localhost和3306</p>
+<h1 id="四、数据库基础指令（注意：一定要在语句的末尾加分号-db-name数据库名称）"><a href="#四、数据库基础指令（注意：一定要在语句的末尾加分号-db-name数据库名称）" class="headerlink" title="四、数据库基础指令（注意：一定要在语句的末尾加分号; db_name数据库名称）"></a>四、数据库基础指令（注意：一定要在语句的末尾加分号; db_name数据库名称）</h1><p>1、创建数据库 create database <em>*</em>;<br>2、查看数据库<br>查看当前数据库服务器中所有的数据库：show databases;<br>显示数据库创建语句<br>show create database db_name;<br>3、查看mydb1数据库的创建语句<br>show create database mydb1;<br>4、删除数据库<br>drop create database db_name;<br>5、选择数据库<br>use db_name;<br>查看当前使用的数据库<br>select database();</p>
+<h1 id="五、数据表的基本操作"><a href="#五、数据表的基本操作" class="headerlink" title="五、数据表的基本操作"></a>五、数据表的基本操作</h1><p>1、创建数据表<br>（datatype:数据类型&lt;选择数据类型：首选足够用，其次尽量小&gt;，具体数据类型不在本文做具体说明）<br>create table table_name<br>(<br>    field1  datatype,<br>    field2  datatype,<br>    field3  datatype,<br>)<br>2、查看数据表<br>查看当前数据库中的所有表<br>show tables;<br>查看表结构<br>desc table_name;<br>查看建表语句<br>show create table table_name;<br>3、修改数据表（colum 代表你新增加字段的名字）<br>增加列<br>ALTER TABLE table_name ADD colum datatype;<br>修改列<br>ALTER TABLE table_name MODIFY colum datatype;<br>删除列<br>ALTER TABLE table_name DROP colum;<br>修改表名<br>rename TABLE table_name to new_table_name;<br>修改列名<br>ALTER TABLE table_name change colum_name new_colum_name datatype;</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Mysql/" rel="tag"># Mysql</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/02/25/gulp（自动化工作流）简单入门/" rel="prev" title="gulp（自动化工作流）简单入门">
+                gulp（自动化工作流）简单入门 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/me.jpg"
+               alt="Nfinding" />
+          <p class="site-author-name" itemprop="name">Nfinding</p>
+           
+              <p class="site-description motion-element" itemprop="description">Now ！让我们一起在这里发现、学习！</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Nfinding" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/5106262972/profile?rightmod=1&wvr=6&mod=personnumber&is_all=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://zhihu.com/people/wang-zhang-fu-14" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#当我遇到NodeJs之后，好像通过这个’门缝’渐渐对后台有了了解，然后就有了试试本地数据库的想法，然后就在众多数据库（关系型数据库-oracle、miscrosoft-Sql-Server、mysql、postgresql（以稳定性著称）非关系数据库-redis数据库（内存数据库））中选择了mysql。"><span class="nav-number">1.</span> <span class="nav-text">当我遇到NodeJs之后，好像通过这个’门缝’渐渐对后台有了了解，然后就有了试试本地数据库的想法，然后就在众多数据库（关系型数据库:oracle、miscrosoft Sql Server、mysql、postgresql（以稳定性著称）非关系数据库:redis数据库（内存数据库））中选择了mysql。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL数据库"><span class="nav-number">2.</span> <span class="nav-text">MySQL数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MySQL数据管理系统由瑞典的MySQLDB公司开发，但是几经辗转，现在已经是Oracle的产品了。"><span class="nav-number">2.1.</span> <span class="nav-text">MySQL数据管理系统由瑞典的MySQLDB公司开发，但是几经辗转，现在已经是Oracle的产品了。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一、-MySQL安装与配置"><span class="nav-number"></span> <span class="nav-text">一、 MySQL安装与配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Windows平台下安装和配置MySQL-官方网站：http-www-mysql-com"><span class="nav-number">1.</span> <span class="nav-text">Windows平台下安装和配置MySQL     官方网站：http://www.mysql.com/</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、MySQL目录结构"><span class="nav-number"></span> <span class="nav-text">二、MySQL目录结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、MySQL的使用"><span class="nav-number"></span> <span class="nav-text">三、MySQL的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#启动-和-停止MySQL服务"><span class="nav-number">1.</span> <span class="nav-text">启动 和 停止MySQL服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#登录MySQL数据库"><span class="nav-number">2.</span> <span class="nav-text">登录MySQL数据库</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四、数据库基础指令（注意：一定要在语句的末尾加分号-db-name数据库名称）"><span class="nav-number"></span> <span class="nav-text">四、数据库基础指令（注意：一定要在语句的末尾加分号; db_name数据库名称）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#五、数据表的基本操作"><span class="nav-number"></span> <span class="nav-text">五、数据表的基本操作</span></a></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Nfinding</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three.min.js"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
