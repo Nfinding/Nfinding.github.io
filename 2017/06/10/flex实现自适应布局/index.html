@@ -86,7 +86,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="gulp工具," />
+  <meta name="keywords" content="布局方式：flex布局," />
 
 
 
@@ -102,17 +102,17 @@
 
 
 
-<meta name="description" content="gulp（http://gulpjs.com/）在我看来工程的开始，环境是最基础、最前提nodejs npm是使用gulp的前提 1.安装安装全局的gulp-cli（gulp命令行工具） npm install gulp-cli -g在项目中安装gulp  npm install gulp –save-devgulp中文文档（https://github.com/lisposter/gulp-do">
-<meta name="keywords" content="gulp工具">
+<meta name="description" content="Flex布局实现页面（垂直方向）自适应Flex布局语法（容器 || 项目）PS：设置Flex布局后子元素的float、clear、vertical-align属性失效 a) 定义容器： display:flex;/行内元素设置：inline-flex; (-webkit-需要时添加)容器默认水平主轴（main axis）、垂直交叉轴（cross axis）PS； 项目默认沿主轴排列 容器属性1.设">
+<meta name="keywords" content="布局方式：flex布局">
 <meta property="og:type" content="article">
-<meta property="og:title" content="gulp（自动化工作流）简单入门">
-<meta property="og:url" content="https://Nfinding.githup.io/2017/02/25/gulp（自动化工作流）简单入门/index.html">
+<meta property="og:title" content="flex实现自适应布局">
+<meta property="og:url" content="https://Nfinding.githup.io/2017/06/10/flex实现自适应布局/index.html">
 <meta property="og:site_name" content="Nfinding">
-<meta property="og:description" content="gulp（http://gulpjs.com/）在我看来工程的开始，环境是最基础、最前提nodejs npm是使用gulp的前提 1.安装安装全局的gulp-cli（gulp命令行工具） npm install gulp-cli -g在项目中安装gulp  npm install gulp –save-devgulp中文文档（https://github.com/lisposter/gulp-do">
-<meta property="og:updated_time" content="2017-04-25T03:13:53.395Z">
+<meta property="og:description" content="Flex布局实现页面（垂直方向）自适应Flex布局语法（容器 || 项目）PS：设置Flex布局后子元素的float、clear、vertical-align属性失效 a) 定义容器： display:flex;/行内元素设置：inline-flex; (-webkit-需要时添加)容器默认水平主轴（main axis）、垂直交叉轴（cross axis）PS； 项目默认沿主轴排列 容器属性1.设">
+<meta property="og:updated_time" content="2017-06-21T10:18:05.832Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="gulp（自动化工作流）简单入门">
-<meta name="twitter:description" content="gulp（http://gulpjs.com/）在我看来工程的开始，环境是最基础、最前提nodejs npm是使用gulp的前提 1.安装安装全局的gulp-cli（gulp命令行工具） npm install gulp-cli -g在项目中安装gulp  npm install gulp –save-devgulp中文文档（https://github.com/lisposter/gulp-do">
+<meta name="twitter:title" content="flex实现自适应布局">
+<meta name="twitter:description" content="Flex布局实现页面（垂直方向）自适应Flex布局语法（容器 || 项目）PS：设置Flex布局后子元素的float、clear、vertical-align属性失效 a) 定义容器： display:flex;/行内元素设置：inline-flex; (-webkit-需要时添加)容器默认水平主轴（main axis）、垂直交叉轴（cross axis）PS； 项目默认沿主轴排列 容器属性1.设">
 
 
 
@@ -140,13 +140,13 @@
 
 
 
-  <link rel="canonical" href="https://Nfinding.githup.io/2017/02/25/gulp（自动化工作流）简单入门/"/>
+  <link rel="canonical" href="https://Nfinding.githup.io/2017/06/10/flex实现自适应布局/"/>
 
 
 
 
 
-  <title>gulp（自动化工作流）简单入门 | Nfinding</title>
+  <title>flex实现自适应布局 | Nfinding</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -285,7 +285,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://Nfinding.githup.io/2017/02/25/gulp（自动化工作流）简单入门/">
+    <link itemprop="mainEntityOfPage" href="https://Nfinding.githup.io/2017/06/10/flex实现自适应布局/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nfinding">
@@ -306,7 +306,7 @@
             
             
               
-                gulp（自动化工作流）简单入门
+                flex实现自适应布局
               
             
           </h1>
@@ -321,8 +321,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-25T09:01:58+08:00">
-                2017-02-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-10T14:56:06+08:00">
+                2017-06-10
               </time>
             
 
@@ -344,8 +344,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/工具/" itemprop="url" rel="index">
-                    <span itemprop="name">工具</span>
+                  <a href="/categories/flex布局/" itemprop="url" rel="index">
+                    <span itemprop="name">flex布局</span>
                   </a>
                 </span>
 
@@ -378,11 +378,14 @@
       
 
       
-        <h1 id="gulp（http-gulpjs-com-）"><a href="#gulp（http-gulpjs-com-）" class="headerlink" title="gulp（http://gulpjs.com/）"></a>gulp（<a href="http://gulpjs.com/）" target="_blank" rel="external">http://gulpjs.com/）</a></h1><p>在我看来工程的开始，环境是最基础、最前提<br>nodejs npm是使用gulp的前提</p>
-<h2 id="1-安装"><a href="#1-安装" class="headerlink" title="1.安装"></a>1.安装</h2><p>安装全局的gulp-cli（gulp命令行工具） npm install gulp-cli -g<br>在项目中安装gulp  npm install gulp –save-dev<br>gulp中文文档（<a href="https://github.com/lisposter/gulp-docs-zh-cn）" target="_blank" rel="external">https://github.com/lisposter/gulp-docs-zh-cn）</a></p>
-<h2 id="2-常用API"><a href="#2-常用API" class="headerlink" title="2.常用API"></a>2.常用API</h2><p>gulp.src(）找文件<br>gulp.dest() copy到哪儿<br>gulp.task() 声明一个任务<br>gulp.watch() 监视文件</p>
-<h2 id="3-gulp常用插件以及browser-sync的使用"><a href="#3-gulp常用插件以及browser-sync的使用" class="headerlink" title="3.gulp常用插件以及browser-sync的使用"></a>3.gulp常用插件以及browser-sync的使用</h2><p>gulp<br>gulp-htmlmin<br>gulp-less<br>gulp-cssnano<br>gulp-concat<br>gulp-uglify<br>browser-sync</p>
-
+        <h1 id="Flex布局实现页面（垂直方向）自适应"><a href="#Flex布局实现页面（垂直方向）自适应" class="headerlink" title="Flex布局实现页面（垂直方向）自适应"></a>Flex布局实现页面（垂直方向）自适应</h1><h2 id="Flex布局语法（容器-项目）"><a href="#Flex布局语法（容器-项目）" class="headerlink" title="Flex布局语法（容器 || 项目）"></a>Flex布局语法（容器 || 项目）</h2><p>PS：设置Flex布局后子元素的float、clear、vertical-align属性失效</p>
+<h3 id="a-定义容器：-display-flex-行内元素设置：inline-flex-webkit-需要时添加"><a href="#a-定义容器：-display-flex-行内元素设置：inline-flex-webkit-需要时添加" class="headerlink" title="a) 定义容器： display:flex;/行内元素设置：inline-flex; (-webkit-需要时添加)"></a>a) 定义容器： display:flex;/行内元素设置：inline-flex; (-webkit-需要时添加)</h3><p>容器默认水平主轴（main axis）、垂直交叉轴（cross axis）<br>PS； 项目默认沿主轴排列</p>
+<h3 id="容器属性"><a href="#容器属性" class="headerlink" title="容器属性"></a>容器属性</h3><p>1.设置主轴的方向（即项目的排列方向）<br>flex-direction:row(默认主轴水平，左端开始) | row-reverse(主轴水平，右端开始) | column(主轴垂直，上沿开始) | column-reverse（主轴垂直，下沿开始）<br>2.设置是否换行<br>flex-wrap:nowrap(默认 不换行) | wrap（换行，第一行在上）| warp-reverse（换行，第一行在下）<br>3.flex-direction和flex-wrap简写形式<br>flex-flow：row nowrap（默认）<br>4.设置子元素（项目）在主轴上的对齐方式（主轴默认从左到右）<br>justify-content:flex-start(默认 左对齐) | flex-end（右对齐）| center（居中）| space-between（两端对齐，项目间隔相等）| space-around（单独的每个项目两端间隔相等）<br>5.设置子元素（项目）在交叉轴上对齐方式（默认交叉轴从上到下）<br>align-items:flex-start（交叉轴起点对齐）| flex-end（交叉轴终点对齐）| center（交叉轴中点对齐）| baseline（项目的第一行文字的基线对齐）| stretch（默认 项目未设置高度或设为auto，项目将占满整个容器高度）<br>6.设置多根轴线对齐方式（项目只有一根轴线，此属性无效）<br>align-content:flex-start(与交叉轴的起点对齐) | flex-end（与交叉轴终点对齐）| center（与交叉轴中点对齐）| space-between（与交叉轴两端对齐，轴线两端间隔平均分布）| space-around（每根轴线两侧间隔相等）| stretch（默认，轴线占满整个交叉轴）</p>
+<h3 id="b-容器的子元素称为-项目："><a href="#b-容器的子元素称为-项目：" class="headerlink" title="b) 容器的子元素称为 项目："></a>b) 容器的子元素称为 项目：</h3><h3 id="项目属性"><a href="#项目属性" class="headerlink" title="项目属性"></a>项目属性</h3><p>1.设置项目的排列顺序（数值越小越靠前，默认0）<br>order: number<br>2.设置项目放大比例（当为默认值0时，如果存有空间也不放大）<br>flex-grow: number<br>某容器内所有项目该属性值number为1，项目等分剩余空间，为2的项目占据剩余空间是其他为1项目的1倍</p>
+<ol>
+<li>设置项目缩小比例（默认为1 ，如果空间不足该项目缩小）<br>flex-shrink: number<br>当该属性设置为0，其他项目为1，当空间不足时，前者不缩小<br>4.设置在分配空间之前，项目占据的主轴空间。（默认auto，即项目本身大小）<br>flex-basis: length<br>5.flex-grow,flex-shrink,flex-basis的简写flex属性（默认0 1 auto）<br>建议使用：flex：auto(1 1 auto)/none(0 0 auto);<br>6.设置单个项目与其他项目不同的对齐方式（默认auto ，即继承父元素align-items，无父元素，为stretch）<br>align-self: auto | flex-start | flex-end | center | baseline | stretch<br>设置后可覆盖align-items属性。</li>
+</ol>
+<h2 id="以下是我应用Flex布局做的一个简单的自适应页面"><a href="#以下是我应用Flex布局做的一个简单的自适应页面" class="headerlink" title="以下是我应用Flex布局做的一个简单的自适应页面"></a>以下是我应用Flex布局做的一个简单的自适应页面</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=&quot;en&quot;&gt;</div><div class="line">&lt;head&gt;</div><div class="line">&lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">&lt;title&gt;Flex布局实现自适应&lt;/title&gt;</div><div class="line">&lt;style&gt;</div><div class="line">html,body &#123;</div><div class="line">	height: 100%;</div><div class="line">&#125;</div><div class="line">body &#123;</div><div class="line">	margin: 0;</div><div class="line">	padding:0;</div><div class="line">	display:flex;  /*将整个body设置为容器*/</div><div class="line">	flex-flow: column wrap;  /*设置从上到下垂直排列方式，允许换行*/</div><div class="line">&#125;</div><div class="line">.d1 &#123;</div><div class="line">	background-color: red;</div><div class="line">	flex: 1 </div><div class="line">&#125;</div><div class="line">.d2 &#123;</div><div class="line">	background-color: skyblue;</div><div class="line">	flex: 2;</div><div class="line">	display: flex;</div><div class="line">&#125;</div><div class="line">.i1,.i3 &#123;</div><div class="line">	background-color: yellow;</div><div class="line">	flex:1;</div><div class="line">&#125;</div><div class="line">.i2 &#123;</div><div class="line">	background-color: black;</div><div class="line">	flex:2;</div><div class="line">&#125;</div><div class="line">&lt;/style&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">	&lt;div class=&quot;d1&quot;&gt;&lt;/div&gt;</div><div class="line">	&lt;div class=&quot;d2&quot;&gt;</div><div class="line">		&lt;div class=&quot;i1&quot;&gt;&lt;/div&gt;</div><div class="line">		&lt;div class=&quot;i2&quot;&gt;&lt;/div&gt;</div><div class="line">		&lt;div class=&quot;i3&quot;&gt;&lt;/div&gt;</div><div class="line">	&lt;/div&gt;</div><div class="line">	&lt;div class=&quot;d1&quot;&gt;&lt;/div&gt;	</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
       
     </div>
 
@@ -411,7 +414,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/gulp工具/" rel="tag"># gulp工具</a>
+            <a href="/tags/布局方式：flex布局/" rel="tag"># 布局方式：flex布局</a>
           
         </div>
       
@@ -424,18 +427,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/02/28/我的Mysql入门/" rel="next" title="我的Mysql入门">
-                <i class="fa fa-chevron-left"></i> 我的Mysql入门
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/02/21/JS二分法闲聊/" rel="prev" title="JS二分法闲聊">
-                JS二分法闲聊 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/02/28/我的Mysql入门/" rel="prev" title="我的Mysql入门">
+                我的Mysql入门 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -594,7 +593,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#gulp（http-gulpjs-com-）"><span class="nav-number">1.</span> <span class="nav-text">gulp（http://gulpjs.com/）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-安装"><span class="nav-number">1.1.</span> <span class="nav-text">1.安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-常用API"><span class="nav-number">1.2.</span> <span class="nav-text">2.常用API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-gulp常用插件以及browser-sync的使用"><span class="nav-number">1.3.</span> <span class="nav-text">3.gulp常用插件以及browser-sync的使用</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Flex布局实现页面（垂直方向）自适应"><span class="nav-number">1.</span> <span class="nav-text">Flex布局实现页面（垂直方向）自适应</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Flex布局语法（容器-项目）"><span class="nav-number">1.1.</span> <span class="nav-text">Flex布局语法（容器 || 项目）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#a-定义容器：-display-flex-行内元素设置：inline-flex-webkit-需要时添加"><span class="nav-number">1.1.1.</span> <span class="nav-text">a) 定义容器： display:flex;/行内元素设置：inline-flex; (-webkit-需要时添加)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#容器属性"><span class="nav-number">1.1.2.</span> <span class="nav-text">容器属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#b-容器的子元素称为-项目："><span class="nav-number">1.1.3.</span> <span class="nav-text">b) 容器的子元素称为 项目：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#项目属性"><span class="nav-number">1.1.4.</span> <span class="nav-text">项目属性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#以下是我应用Flex布局做的一个简单的自适应页面"><span class="nav-number">1.2.</span> <span class="nav-text">以下是我应用Flex布局做的一个简单的自适应页面</span></a></li></ol></li></ol></div>
             
 
           </div>
